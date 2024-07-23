@@ -7,11 +7,15 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "consolidation/robo": "^5.0",
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.12",
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.2",
+        "dragonmantank/cron-expression": "^3.3",
+        "peppeocchi/php-cron-scheduler": "^4.0",
         "phpdocumentor/reflection-docblock": "^5.4",
+        "phpseclib/phpseclib": "^3.0",
         "phpstan/phpdoc-parser": "^1.29",
         "symfony/asset": "7.1.*",
         "symfony/asset-mapper": "7.1.*",
@@ -32,6 +36,7 @@
         "symfony/property-access": "7.1.*",
         "symfony/property-info": "7.1.*",
         "symfony/runtime": "7.1.*",
+        "symfony/scheduler": "7.1.*",
         "symfony/security-bundle": "7.1.*",
         "symfony/serializer": "7.1.*",
         "symfony/stimulus-bundle": "^2.18",
@@ -56,12 +61,14 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/"
-        }
+        },
+        "autoload-exclude": ["src/Controller/scripts"]
     },
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/"
-        }
+        },
+        "autoload-exclude": ["src/Controller/scripts"]
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
@@ -100,7 +107,7 @@
         "symfony/browser-kit": "7.1.*",
         "symfony/css-selector": "7.1.*",
         "symfony/debug-bundle": "7.1.*",
-        "symfony/maker-bundle": "^1.0",
+        "symfony/maker-bundle": "^1.60",
         "symfony/phpunit-bridge": "^7.1",
         "symfony/stopwatch": "7.1.*",
         "symfony/web-profiler-bundle": "7.1.*"

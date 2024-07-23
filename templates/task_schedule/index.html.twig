@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TaskSchedule index{% endblock %}
+
+{% block body %}
+    <h1>Task Schedule List</h1>
+
+    <a href="{{ path('app_task_schedule_new') }}">Create new</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Script</th>
+                <th>Time execution</th>
+                <th>Outputlog File</th>
+                <th>Can be initialized</th>
+                <th>Status</th>
+                <th>Last execution time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for task_schedule in task_schedules %}
+            <tr>
+                <td>{{ task_schedule.id }}</td>
+                <td>{{ task_schedule.scriptPath }}</td>
+                <td>{{ task_schedule.timeExecution }}</td>
+                <td>{{ task_schedule.outputlogPath }}</td>
+                <td>{{ task_schedule.canInit ? 'Yes' : 'No' }}</td>
+                <td>{{ task_schedule.status }}</td>
+                <td>{{ task_schedule.lastExecutionTime ? task_schedule.lastExecutionTime|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_task_schedule_show', {'id': task_schedule.id}) }}">show</a>
+                    <a href="{{ path('app_task_schedule_edit', {'id': task_schedule.id}) }}">edit</a>
+                    <a href="{{ path('app_task_schedule_init', {'id': task_schedule.id}) }}">init</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
